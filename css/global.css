@@ -1,0 +1,132 @@
+body {
+  background: black;
+  /* width: 100vw;
+  height: 100vh;
+  background: linear-gradient(to bottom, black 80%, hsl(277, 100%, 6%) 100%); */
+  /* background: radial-gradient(red, black); */
+  background-size: 100%;
+  background-position: 100% 0;
+  color: white;
+  margin: 0;
+  font-family: "Abril Fatface", Garamond, serif;
+}
+
+.foreground {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  gap: 8rem;
+}
+
+.contact-btn {
+  font-size: 1.5rem;
+  padding: 1em 2em;
+  /* font-family: "Abril Fatface", cursive; */
+  color: white;
+  background: #000;
+  border: none;
+  position: relative;
+  text-decoration: none;
+  /* z-index: 1; */
+  /* transition: background 0.3s ease-in-out; */
+  /* transition: color 0.3s ease-in-out; */
+}
+
+.contact-btn::before {
+  content: "";
+  position: absolute;
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  /* background: linear-gradient(to top right, white 0% 30%, transparent 100%); */
+  /* background: linear-gradient(to top right, white 0%, transparent 50%); */
+  --bg-var: linear-gradient(60deg, white 0% 33%, transparent 50%);
+  background-image: var(--bg-var);
+  background-size: 300%;
+  background-position: center;
+  left: -1px;
+  top: -1px;
+  z-index: -1;
+  transition: background-position 0.5s ease-in-out;
+}
+
+.contact-btn::after {
+  content: "";
+  position: absolute;
+  width: calc(100% + 10px);
+  height: calc(100% + 10px);
+  background: white;
+  opacity: 0%;
+  left: -5px;
+  top: -3px;
+  z-index: -2;
+  filter: blur(10px);
+
+  transition: 0.5s ease-in-out;
+}
+
+.contact-btn:hover {
+  cursor: pointer;
+  /* background: white;
+  color: black; */
+}
+
+.contact-btn:hover::before {
+  /* background: white; */
+  background-position: left;
+}
+
+.contact-btn:hover::after {
+  opacity: 50%;
+}
+
+.signature {
+  --timing: 2s;
+  filter: drop-shadow(0 0 1px white);
+  animation: pulse 2s linear infinite alternate;
+}
+
+.stroke-1,
+.stroke-2,
+.stroke-3,
+.stroke-4 {
+  stroke-dasharray: 5000;
+  stroke-dashoffset: 5000;
+  animation: dash calc(var(--timing)) linear forwards;
+  animation-direction: alternate;
+  /* box-shadow: 0 0 100px 100px red; */
+}
+
+/* .stroke-1 {
+  stroke-dasharray: 5000;
+  stroke-dashoffset: 5000;
+  animation: dash calc(var(--timing)) linear forwards;
+} */
+
+.stroke-2 {
+  animation-delay: calc(var(--timing) * 0.25);
+  --timing: 4s;
+}
+
+.stroke-3 {
+  animation-delay: calc(var(--timing) * 1.5);
+}
+
+.stroke-4 {
+  animation-delay: calc(var(--timing) * 1.6);
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes pulse {
+  to {
+    filter: drop-shadow(0 0 20px white);
+  }
+}
